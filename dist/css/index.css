@@ -1,0 +1,87 @@
+.add-layer-icon {
+  width: 30px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.cart-not-available {
+  cursor: not-allowed;
+}
+
+.cart-not-available button {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.carousel img {
+  margin: 0 auto;
+}
+
+.slick-slide {
+  opacity: 0.5;
+}
+
+.slick-center {
+  opacity: 1;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.slider-prev {
+  left: calc(50% - 170px);
+}
+
+.slider-next {
+  right: calc(50% - 170px);
+}
+
+.slider-arrow img {
+  width: 50px;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.help-block {
+  position: absolute;
+  font-size: 12px;
+}
+
+.modal-togggle {
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.modal-togggle:hover {
+  text-decoration: none;
+}
+
+.modal-togggle img {
+  width: 22px;
+  margin-right: 5px;
+}

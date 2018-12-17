@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Foam calculator</title>
+    <base href="./" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/slick-theme.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <div id="material-types">
+      <div
+        data-material-price="2.09"
+        data-material-description="Low Den Foam - Med Firmness 32 - $2.09/BF"
+      ></div>
+      <div
+        data-material-price="3.19"
+        data-material-description="Med Den Foam - Soft Firmness 26 - $3.19/BF"
+      ></div>
+      <div
+        data-material-price="3.19"
+        data-material-description="Med Den Foam - Med Firmness 35 - $3.19/BF"
+      ></div>
+      <div
+        data-material-price="3.19"
+        data-material-description="Med Den Foam - Firm Firmness 45 - $3.19/BF"
+      ></div>
+      <div
+        data-material-price="3.59"
+        data-material-description="High Den Foam - Soft Firmness 16 - $3.59/BF"
+      ></div>
+      <div
+        data-material-price="4.09"
+        data-material-description="High Den Foam - Med Firmness 26 - $4.09/BF"
+      ></div>
+      <div
+        data-material-price="4.09"
+        data-material-description="High Den Foam - Med-Firm Firmness 35 - $4.09/BF"
+      ></div>
+      <div
+        data-material-price="4.09"
+        data-material-description="High Den Foam - Firm Firmness 41 - $4.09/BF"
+      ></div>
+      <div
+        data-material-price="4.29"
+        data-material-description="High Den Foam - Ex Firm Firmness 61 - $4.29/BF"
+      ></div>
+      <div
+        data-material-price="6.99"
+        data-material-description="5lb Memory Foam - $6.99/BF"
+      ></div>
+      <div
+        data-material-price="8.99"
+        data-material-description="Natural Latex Soft - $8.99/BF"
+      ></div>
+      <div
+        data-material-price="8.99"
+        data-material-description="Natural Latex Med - $8.99/BF"
+      ></div>
+      <div
+        data-material-price="8.99"
+        data-material-description="Natural Latex Firm - $8.99/BF"
+      ></div>
+      <div
+        data-material-price="6.59"
+        data-material-description="Outdoor Foam - Med Firmness - $6.59/BF"
+      ></div>
+    </div>
+
+    <div class="container">
+      <div class="carousel">
+        <div id="carousel-content"></div>
+
+        <a id="slider-prev" class="slider-arrow slider-prev"
+          ><img src="svg/prev.svg"
+        /></a>
+        <a id="slider-next" class="slider-arrow slider-next"
+          ><img src="svg/next.svg"
+        /></a>
+      </div>
+
+      <form>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-md-offset-3">
+            <div class="form-group">
+              <select
+                name="foam-shape"
+                id="foam-shape"
+                class="form-control"
+              ></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-md-offset-3 align-center">
+            <a class="modal-togggle" data-toggle="modal" data-target="#myModal">
+              <img src="svg/information.svg" / /> How to use this form
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div id="base-fields"></div>
+          <div id="layer-1-fields"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-md-offset-3 align-center">
+            <div id="layer-2-toggle" class="pointer">
+              <img src="./svg/plus-in-circle.svg" class="add-layer-icon" />
+              <span class="uppercase">Add 2nd layer</span>
+            </div>
+            <p>Optional (Extra $5.00 per layer)</p>
+          </div>
+
+          <div id="layer-2-fields" class="hidden"></div>
+        </div>
+
+        <div class="row">
+          <div
+            id="layer-3-toggle-container"
+            class="col-sm-12 col-md-6 col-md-offset-3 align-center hidden"
+          >
+            <div id="layer-3-toggle" class="pointer">
+              <img src="./svg/plus-in-circle.svg" class="add-layer-icon" />
+              <span class="uppercase">Add 3nd layer</span>
+            </div>
+            <p>Optional (Extra $5.00 per layer)</p>
+          </div>
+
+          <div id="layer-3-fields" class="hidden"></div>
+        </div>
+
+        <div class="row">
+          <div id="price" class="col-sm-12 col-md-4 align-right"></div>
+          <div class="col-sm-12 col-md-2">QUANTITY</div>
+          <div id="cart" class="col-sm-12 col-md-6 align-left">
+            <button class="btn btn-lg btn-success">Add To Cart</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
