@@ -1,5 +1,5 @@
 import { ORDER, SHAPE_NAMES, HTMLContainers } from '../constants';
-import { resetLayers } from '../utils';
+import { resetLayers, toggleLayerToggler } from '../utils';
 import { BaseFields } from './BaseFields';
 
 export const FoamShape = () => {
@@ -20,10 +20,11 @@ export const FoamShape = () => {
       BaseFields(foamShape);
 
       resetLayers();
+      [2, 3].forEach(layer => toggleLayerToggler(layer));
 
       $(HTMLContainers.carousel.content).slick('slickGoTo', index, true);
       $(HTMLContainers.layerFields.thickness(1)).val('');
-      $(HTMLContainers.layerFields.foamType(1)).val('');
+      $(HTMLContainers.layerFields.foamType(1)).prop('selectedIndex', 0);
     })
     .trigger('change');
 };

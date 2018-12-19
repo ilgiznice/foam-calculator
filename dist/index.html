@@ -111,7 +111,16 @@
         <div class="row">
           <div class="col-sm-12 col-md-6 col-md-offset-3 align-center">
             <div id="layer-2-toggle" class="pointer">
-              <img src="./svg/plus-in-circle.svg" class="add-layer-icon" />
+              <img
+                src="svg/plus.svg"
+                id="layer-2-toggle-plus"
+                class="add-layer-icon"
+              />
+              <img
+                src="svg/minus.svg"
+                id="layer-2-toggle-minus"
+                class="add-layer-icon hidden"
+              />
               <span class="uppercase">Add 2nd layer</span>
             </div>
             <p>Optional (Extra $5.00 per layer)</p>
@@ -126,7 +135,16 @@
             class="col-sm-12 col-md-6 col-md-offset-3 align-center hidden"
           >
             <div id="layer-3-toggle" class="pointer">
-              <img src="./svg/plus-in-circle.svg" class="add-layer-icon" />
+              <img
+                src="svg/plus.svg"
+                id="layer-3-toggle-plus"
+                class="add-layer-icon"
+              />
+              <img
+                src="svg/minus.svg"
+                id="layer-3-toggle-minus"
+                class="add-layer-icon hidden"
+              />
               <span class="uppercase">Add 3nd layer</span>
             </div>
             <p>Optional (Extra $5.00 per layer)</p>
@@ -138,7 +156,10 @@
         <div class="row">
           <div id="price" class="col-sm-12 col-md-4 align-right"></div>
           <div class="col-sm-12 col-md-2">QUANTITY</div>
-          <div id="cart" class="col-sm-12 col-md-6 align-left">
+          <div
+            id="cart"
+            class="col-sm-12 col-md-6 align-left cart-not-available"
+          >
             <button class="btn btn-lg btn-success">Add To Cart</button>
           </div>
         </div>

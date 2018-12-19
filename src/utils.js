@@ -77,8 +77,8 @@ export const calculatePrice = () => {
 
   let totalPrice = (layer1Price + layer2Price + layer3Price) / 144;
 
-  if (hasLayer2) totalPrice += 5;
-  if (hasLayer3) totalPrice += 5;
+  if (hasLayer2 && layer2Price) totalPrice += 5;
+  if (hasLayer3 && layer3Price) totalPrice += 5;
 
   $('#cart').toggleClass('cart-not-available', totalPrice < 5);
   $('#price').text('');
@@ -106,6 +106,38 @@ export const validateInputValue = function handler() {
   calculatePrice();
 };
 
+const resetLayerFields = (...layers) =>
+  layers.forEach(layer => {
+    $(HTMLContainers.layerFields.thickness(layer)).val('');
+    $(HTMLContainers.layerFields.foamType(layer)).val('');
+  });
+
+export const toggleLayerToggler = layer => {
+  let condition;
+
+  switch (layer) {
+    case 2:
+      condition = hasLayer2;
+      break;
+
+    case 3:
+      condition = hasLayer3;
+      break;
+
+    default:
+      condition = false;
+  }
+
+  $(`${HTMLContainers.layerFields.toggle(layer)}-plus`).toggleClass(
+    'hidden',
+    condition,
+  );
+  $(`${HTMLContainers.layerFields.toggle(layer)}-minus`).toggleClass(
+    'hidden',
+    !condition,
+  );
+};
+
 $(HTMLContainers.layerFields.toggle(2)).click(() => {
   hasLayer2 = !hasLayer2;
   hasLayer3Toggle = hasLayer2;
@@ -113,12 +145,11 @@ $(HTMLContainers.layerFields.toggle(2)).click(() => {
   if (!hasLayer2) {
     hasLayer3 = false;
 
-    $(HTMLContainers.layerFields.thickness(2)).val('');
-    $(HTMLContainers.layerFields.foamType(2)).val('');
-    $(HTMLContainers.layerFields.thickness(3)).val('');
-    $(HTMLContainers.layerFields.foamType(3)).val('');
+    resetLayerFields([2, 3]);
+    toggleLayerToggler(3);
   }
 
+  toggleLayerToggler(2);
   toggleLayers();
   calculatePrice();
 });
@@ -127,9 +158,10 @@ $(HTMLContainers.layerFields.toggle(3)).click(() => {
   hasLayer3 = !hasLayer3;
 
   if (!hasLayer3) {
-    $(HTMLContainers.layerFields.thickness(3)).val('');
-    $(HTMLContainers.layerFields.foamType(3)).val('');
+    resetLayerFields(3);
   }
+
+  toggleLayerToggler(3);
 
   toggleLayers();
   calculatePrice();
