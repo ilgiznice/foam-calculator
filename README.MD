@@ -1,15 +1,16 @@
-##Custom foam calculator
+# Custom foam calculator
 
-#How to develop?
+## How to develop?
 
 Run "npm run start", open dist/index.html
 
-#How to build?
+## How to build?
 
 Run "npm run build"
 
-#Code structure
+## Code structure
 
+```
 -src
 --components
 ---BaseField (width, length, ...)
@@ -20,12 +21,13 @@ Run "npm run build"
 --constants (shapes, order, fields, images, html containers, etc)
 --utils (shared functions like calculating price or managing layers)
 --index (main entry point)
+```
 
-#How to change hidden price and description field names?
+## How to change hidden price and description field names?
 
 Go to src/constants and change "\_price" and "\_description" values in HTMLContainers
 
-#How to add/change/reorder shape?
+## How to add/change/reorder shape?
 
 1. Go to src/constants
 2. Add new constant, for example "const NEW_FORM = 'NEW FORM'"
@@ -34,6 +36,6 @@ Go to src/constants and change "\_price" and "\_description" values in HTMLConta
 5. Name shape inside SHAPE_NAMES
 6. Add field for shape inside FIELDS
 
-#How to change materials' wrapper and data attributes?
+## How to change materials' wrapper and data attributes?
 
 Go to src/constants and change container, price, description of materials in HTMLContainers
