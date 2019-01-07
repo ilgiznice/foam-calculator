@@ -142,16 +142,17 @@ export const calculatePrice = () => {
   const layer2Price = hasLayer2 ? getLayerPrice(2) : 0;
   const layer3Price = hasLayer3 ? getLayerPrice(3) : 0;
 
-  let totalPrice = (layer1Price + layer2Price + layer3Price) / 144;
+  let totalPrice = (layer1Price + layer2Price + layer3Price) / 144 || 0;
 
   if (hasLayer2 && layer2Price) totalPrice += 5;
   if (hasLayer3 && layer3Price) totalPrice += 5;
 
   $(HTMLContainers.cart).toggleClass('cart-not-available', totalPrice < 5);
-  $(HTMLContainers.price).text('');
+  $(HTMLContainers.price).text(`$ ${totalPrice.toFixed(2)}`);
+  $(HTMLContainers.minimumPriceNote).hide();
 
-  if (totalPrice > 5) {
-    $(HTMLContainers.price).text(`$ ${totalPrice.toFixed(2)}`);
+  if (totalPrice < 5) {
+    $(HTMLContainers.minimumPriceNote).show();
   }
 
   // eslint-disable-next-line

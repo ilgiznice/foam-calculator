@@ -147,6 +147,7 @@ export const HTMLContainers = {
       `${isSelector ? '#' : ''}layer-${layer}-foam-type`,
   },
   cart: '#cart',
+  minimumPriceNote: '#minimum-price-note',
   price: '#price',
   _price: '[data-drupal-selector="edit-unit-price-0-amount-number"]',
   _description: '[data-drupal-selector="description"]',
