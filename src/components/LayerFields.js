@@ -3,7 +3,7 @@ import { getMaterials, validateInputValue, calculatePrice } from '../utils';
 
 const Thickness = layer => {
   const wrapper = $('<div />', {
-    class: 'form-group col-sm-12 col-md-6',
+    class: 'form-group col-sm-12 col-md-6 thickness-wrapper',
   });
   const label = $('<label></label>').text('Thickness');
   const input = $('<input />', {

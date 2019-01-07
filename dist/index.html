@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <input
+      type="hidden"
+      data-drupal-selector="edit-unit-price-0-amount-number"
+    />
+    <input type="hidden" data-drupal-selector="description" />
     <div id="material-types">
       <div
         data-material-price="2.09"
@@ -155,7 +160,9 @@
 
         <div class="row">
           <div id="price" class="col-sm-12 col-md-4 align-right"></div>
-          <div class="col-sm-12 col-md-2">QUANTITY</div>
+          <div class="col-sm-12 col-md-2 quantity">
+            <input type="text" value="1" class="form-control" />
+          </div>
           <div
             id="cart"
             class="col-sm-12 col-md-6 align-left cart-not-available"

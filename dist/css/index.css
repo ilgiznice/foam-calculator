@@ -86,6 +86,27 @@
   margin-right: 5px;
 }
 
-svg {
-  fill: red;
+.quantity input {
+  border: 1px solid #32cd32;
+  width: 50px;
+  text-align: center;
+}
+
+.quantity::before,
+.quantity::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.quantity::before {
+  content: '-';
+  left: -5px;
+}
+
+.quantity::after {
+  content: '+';
+  left: 75px;
 }

@@ -4,7 +4,7 @@ import { validateInputValue } from '../utils';
 export const BaseFields = shape => {
   const foamFields = FIELDS[shape].fields.map(field => {
     const wrapper = $('<div />', {
-      class: 'form-group col-sm-12 col-md-6',
+      class: 'form-group col-sm-12 col-md-6 base-field-wrapper',
     });
     const label = $('<label></label>').text(field.name);
     const attributes = {

@@ -119,7 +119,11 @@ export const FIELDS = {
 };
 
 export const HTMLContainers = {
-  materialTypes: '#material-types',
+  materials: {
+    container: '#material-types',
+    price: 'material-price',
+    description: 'material-description',
+  },
   carousel: {
     content: '#carousel-content',
     prevArrow: '#slider-prev',
@@ -142,6 +146,10 @@ export const HTMLContainers = {
     foamType: (layer, isSelector = true) =>
       `${isSelector ? '#' : ''}layer-${layer}-foam-type`,
   },
+  cart: '#cart',
+  price: '#price',
+  _price: '[data-drupal-selector="edit-unit-price-0-amount-number"]',
+  _description: '[data-drupal-selector="description"]',
 };
 
 export const IMAGE_FOLDER_PATH = 'images';

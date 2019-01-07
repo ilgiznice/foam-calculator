@@ -5,6 +5,9 @@ import {
   HTMLContainers,
   IMAGE_FOLDER_PATH,
 } from '../constants';
+import { getFormValues, setFormValues } from '../utils';
+
+const formValues = {};
 
 const getImgSrc = shape => `${IMAGE_FOLDER_PATH}/${IMAGE_PATHS[shape]}`;
 
@@ -52,9 +55,19 @@ export const Carousel = () => {
     ],
   });
 
-  $container.on('beforeChange', (a, b, c, nextSlide) => {
+  $container.on('beforeChange', (a, b, currentSlide, nextSlide) => {
+    formValues[currentSlide] = getFormValues();
+
     $(HTMLContainers.foamShape)
       .prop('selectedIndex', nextSlide)
       .trigger('change');
+  });
+
+  $container.on('afterChange', (a, b, currentSlide) => {
+    const slideValues = formValues[currentSlide];
+
+    if (!slideValues) return;
+
+    setFormValues(slideValues);
   });
 };
