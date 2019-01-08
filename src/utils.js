@@ -40,7 +40,9 @@ export const getMaterials = () => [
 ];
 
 const setDescription = (layer1Price, layer2Price, layer3Price) => {
-  let description = '';
+  let description = $(HTMLContainers.foamShape)
+    .find(':selected')
+    .text();
   const totalThickness = [1, 2, 3].reduce((total, layer) => {
     const layerThickness = $(HTMLContainers.layerFields.thickness(layer)).val();
 
@@ -77,7 +79,7 @@ const setDescription = (layer1Price, layer2Price, layer3Price) => {
     };
   };
 
-  description += `Total thickness: ${totalThickness}, dimensions: ${baseDimensions
+  description += `\nTotal thickness: ${totalThickness}, dimensions: ${baseDimensions
     .map(({ label, value }) => `${label}: ${value}`)
     .join(', ')}`;
 
