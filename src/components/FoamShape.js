@@ -4,16 +4,16 @@ import { BaseFields } from './BaseFields';
 
 export const FoamShape = () => {
   const options = ORDER.map((shape, index) =>
-    $('<option></option>', {
+    jQuery('<option></option>', {
       value: shape,
       'data-index': index,
     }).text(SHAPE_NAMES[shape]),
   );
 
-  $(HTMLContainers.foamShape)
+  jQuery(HTMLContainers.foamShape)
     .append(options)
     .on('change', function handler() {
-      const $this = $(this);
+      const $this = jQuery(this);
       const foamShape = $this.val();
       const index = $this.find(':selected').data('index');
 
@@ -22,13 +22,16 @@ export const FoamShape = () => {
       resetLayers();
       [2, 3].forEach(layer => toggleLayerToggler(layer));
 
-      $(HTMLContainers.carousel.content).slick('slickGoTo', index, true);
+      jQuery(HTMLContainers.carousel.content).slick('slickGoTo', index, true);
       [1, 2, 3].forEach(layer => {
-        $(HTMLContainers.layerFields.thickness(layer)).val('');
-        $(HTMLContainers.layerFields.foamType(layer)).prop('selectedIndex', 0);
+        jQuery(HTMLContainers.layerFields.thickness(layer)).val('');
+        jQuery(HTMLContainers.layerFields.foamType(layer)).prop(
+          'selectedIndex',
+          0,
+        );
       });
 
-      $(HTMLContainers.layerFields.thickness(1))
+      jQuery(HTMLContainers.layerFields.thickness(1))
         .parent('.thickness-wrapper')
         .find('label')
         .text(FIELDS[foamShape].thicknessName);

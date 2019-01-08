@@ -6,12 +6,18 @@ let hasLayer3Toggle = false;
 let hasLayer3 = false;
 
 export const toggleLayers = () => {
-  $(HTMLContainers.layerFields.container(2)).toggleClass('hidden', !hasLayer2);
-  $(HTMLContainers.layerFields.toggleContainer(3)).toggleClass(
+  jQuery(HTMLContainers.layerFields.container(2)).toggleClass(
+    'hidden',
+    !hasLayer2,
+  );
+  jQuery(HTMLContainers.layerFields.toggleContainer(3)).toggleClass(
     'hidden',
     !hasLayer3Toggle,
   );
-  $(HTMLContainers.layerFields.container(3)).toggleClass('hidden', !hasLayer3);
+  jQuery(HTMLContainers.layerFields.container(3)).toggleClass(
+    'hidden',
+    !hasLayer3,
+  );
 };
 
 export const resetLayers = () => {
@@ -23,10 +29,10 @@ export const resetLayers = () => {
 };
 
 export const getMaterials = () => [
-  ...$(HTMLContainers.materials.container)
+  ...jQuery(HTMLContainers.materials.container)
     .find('div')
     .map(function handler() {
-      const $materialType = $(this);
+      const $materialType = jQuery(this);
       const price = $materialType.data(HTMLContainers.materials.price);
       const description = $materialType.data(
         HTMLContainers.materials.description,
@@ -40,11 +46,13 @@ export const getMaterials = () => [
 ];
 
 const setDescription = (layer1Price, layer2Price, layer3Price) => {
-  let description = $(HTMLContainers.foamShape)
+  let description = jQuery(HTMLContainers.foamShape)
     .find(':selected')
     .text();
   const totalThickness = [1, 2, 3].reduce((total, layer) => {
-    const layerThickness = $(HTMLContainers.layerFields.thickness(layer)).val();
+    const layerThickness = jQuery(
+      HTMLContainers.layerFields.thickness(layer),
+    ).val();
 
     if (!layerThickness) {
       return total;
@@ -53,8 +61,8 @@ const setDescription = (layer1Price, layer2Price, layer3Price) => {
     return total + parseFloat(layerThickness);
   }, 0);
   const baseDimensions = [
-    ...$(HTMLContainers.baseFields.field()).map((_, field) => {
-      const $field = $(field);
+    ...jQuery(HTMLContainers.baseFields.field()).map((_, field) => {
+      const $field = jQuery(field);
       const label = $field
         .parent('.base-field-wrapper')
         .find('label')
@@ -68,8 +76,8 @@ const setDescription = (layer1Price, layer2Price, layer3Price) => {
     }),
   ];
   const getLayerDimensions = layer => {
-    const thickness = $(HTMLContainers.layerFields.thickness(layer)).val();
-    const $foamType = $(HTMLContainers.layerFields.foamType(layer));
+    const thickness = jQuery(HTMLContainers.layerFields.thickness(layer)).val();
+    const $foamType = jQuery(HTMLContainers.layerFields.foamType(layer));
 
     if (!thickness || $foamType.prop('selectedIndex') === 0) return null;
 
@@ -105,12 +113,12 @@ const setDescription = (layer1Price, layer2Price, layer3Price) => {
   }
 
   // eslint-disable-next-line
-  $(HTMLContainers._description).val(description);
+  jQuery(HTMLContainers._description).val(description);
 };
 
 const getBaseValues = () =>
-  [...$(HTMLContainers.baseFields.field())].reduce((baseValues, field) => {
-    const $field = $(field);
+  [...jQuery(HTMLContainers.baseFields.field())].reduce((baseValues, field) => {
+    const $field = jQuery(field);
     const val = $field.val();
     const dimension = $field.data('dimension');
     const weight = $field.data('weight') || 1;
@@ -130,8 +138,8 @@ const getBaseValues = () =>
 
 const makeGetLayerPrice = baseValues => layer => {
   const layerValues = [
-    $(HTMLContainers.layerFields.thickness(layer)).val(),
-    $(HTMLContainers.layerFields.foamType(layer)).val(),
+    jQuery(HTMLContainers.layerFields.thickness(layer)).val(),
+    jQuery(HTMLContainers.layerFields.foamType(layer)).val(),
   ];
   return [...baseValues, ...layerValues].reduce((price, val) => price * val, 1);
 };
@@ -149,22 +157,22 @@ export const calculatePrice = () => {
   if (hasLayer2 && layer2Price) totalPrice += 5;
   if (hasLayer3 && layer3Price) totalPrice += 5;
 
-  $(HTMLContainers.cart).toggleClass('cart-not-available', totalPrice < 5);
-  $(HTMLContainers.price).text(`$ ${totalPrice.toFixed(2)}`);
-  $(HTMLContainers.minimumPriceNote).hide();
+  jQuery(HTMLContainers.cart).toggleClass('cart-not-available', totalPrice < 5);
+  jQuery(HTMLContainers.price).text(`$ ${totalPrice.toFixed(2)}`);
+  jQuery(HTMLContainers.minimumPriceNote).hide();
 
   if (totalPrice < 5) {
-    $(HTMLContainers.minimumPriceNote).show();
+    jQuery(HTMLContainers.minimumPriceNote).show();
   }
 
   // eslint-disable-next-line
-  $(HTMLContainers._price).val(totalPrice.toFixed(2));
+  jQuery(HTMLContainers._price).val(totalPrice.toFixed(2));
 
   setDescription(layer1Price, layer2Price, layer3Price);
 };
 
 export const validateInputValue = function handler() {
-  const $this = $(this);
+  const $this = jQuery(this);
   const val = $this.val().toString();
   const isValid = DECIMAL_REG_EXP.test(val);
 
@@ -183,8 +191,8 @@ export const validateInputValue = function handler() {
 
 const resetLayerFields = layers =>
   layers.forEach(layer => {
-    $(HTMLContainers.layerFields.thickness(layer)).val('');
-    $(HTMLContainers.layerFields.foamType(layer)).prop('selectedIndex', 0);
+    jQuery(HTMLContainers.layerFields.thickness(layer)).val('');
+    jQuery(HTMLContainers.layerFields.foamType(layer)).prop('selectedIndex', 0);
   });
 
 export const toggleLayerToggler = layer => {
@@ -203,37 +211,39 @@ export const toggleLayerToggler = layer => {
       condition = false;
   }
 
-  $(`${HTMLContainers.layerFields.toggle(layer)}-plus`).toggleClass(
+  jQuery(`${HTMLContainers.layerFields.toggle(layer)}-plus`).toggleClass(
     'hidden',
     condition,
   );
-  $(`${HTMLContainers.layerFields.toggle(layer)}-minus`).toggleClass(
+  jQuery(`${HTMLContainers.layerFields.toggle(layer)}-minus`).toggleClass(
     'hidden',
     !condition,
   );
 };
 
 const getLayerValues = layer => ({
-  thickness: $(HTMLContainers.layerFields.thickness(layer)).val(),
-  foamType: $(HTMLContainers.layerFields.foamType(layer)).val(),
+  thickness: jQuery(HTMLContainers.layerFields.thickness(layer)).val(),
+  foamType: jQuery(HTMLContainers.layerFields.foamType(layer)).val(),
 });
 
 const makeSetLayerValues = formValues => layer => {
   const { thickness, foamType } = formValues[`layer${layer}`];
 
   if (thickness) {
-    $(HTMLContainers.layerFields.thickness(layer)).val(thickness);
+    jQuery(HTMLContainers.layerFields.thickness(layer)).val(thickness);
   }
 
   if (foamType) {
-    $(HTMLContainers.layerFields.foamType(layer)).val(foamType);
+    jQuery(HTMLContainers.layerFields.foamType(layer)).val(foamType);
   }
 };
 
 export const getFormValues = () => {
   const formValues = {
     base: [
-      ...$(HTMLContainers.baseFields.field()).map((_, field) => $(field).val()),
+      ...jQuery(HTMLContainers.baseFields.field()).map((_, field) =>
+        jQuery(field).val(),
+      ),
     ],
     layer1: getLayerValues(1),
   };
@@ -252,8 +262,8 @@ export const getFormValues = () => {
 export const setFormValues = formValues => {
   const setLayerValues = makeSetLayerValues(formValues);
 
-  $(HTMLContainers.baseFields.field()).each(function handler(index) {
-    $(this).val(formValues.base[index]);
+  jQuery(HTMLContainers.baseFields.field()).each(function handler(index) {
+    jQuery(this).val(formValues.base[index]);
   });
 
   setLayerValues(1);
@@ -274,7 +284,7 @@ export const setFormValues = formValues => {
   calculatePrice();
 };
 
-$(HTMLContainers.layerFields.toggle(2)).click(() => {
+jQuery(HTMLContainers.layerFields.toggle(2)).click(() => {
   hasLayer2 = !hasLayer2;
   hasLayer3Toggle = hasLayer2;
 
@@ -290,7 +300,7 @@ $(HTMLContainers.layerFields.toggle(2)).click(() => {
   calculatePrice();
 });
 
-$(HTMLContainers.layerFields.toggle(3)).click(() => {
+jQuery(HTMLContainers.layerFields.toggle(3)).click(() => {
   hasLayer3 = !hasLayer3;
 
   if (!hasLayer3) {

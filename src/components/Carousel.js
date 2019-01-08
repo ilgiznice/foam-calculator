@@ -12,14 +12,14 @@ const formValues = {};
 const getImgSrc = shape => `${IMAGE_FOLDER_PATH}/${IMAGE_PATHS[shape]}`;
 
 export const Carousel = () => {
-  const $container = $(HTMLContainers.carousel.content);
+  const $container = jQuery(HTMLContainers.carousel.content);
   const content = ORDER.map((shape, i) => {
-    const wrapper = $('<div />', {
+    const wrapper = jQuery('<div />', {
       class: `item ${i === 0 ? 'active' : ''}`,
       'data-index': i,
       'data-shape': shape,
     });
-    const img = $('<img />', {
+    const img = jQuery('<img />', {
       src: getImgSrc(shape),
       alt: SHAPE_NAMES[shape],
     });
@@ -34,8 +34,8 @@ export const Carousel = () => {
   $container.slick({
     infinite: true,
     centerMode: true,
-    prevArrow: $(HTMLContainers.carousel.prevArrow),
-    nextArrow: $(HTMLContainers.carousel.nextArrow),
+    prevArrow: jQuery(HTMLContainers.carousel.prevArrow),
+    nextArrow: jQuery(HTMLContainers.carousel.nextArrow),
     mobileFirst: true,
     responsive: [
       {
@@ -58,7 +58,7 @@ export const Carousel = () => {
   $container.on('beforeChange', (a, b, currentSlide, nextSlide) => {
     formValues[currentSlide] = getFormValues();
 
-    $(HTMLContainers.foamShape)
+    jQuery(HTMLContainers.foamShape)
       .prop('selectedIndex', nextSlide)
       .trigger('change');
   });

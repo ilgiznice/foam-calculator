@@ -11,5 +11,6 @@ module.exports = {
   },
   globals: {
     $: false,
+    jQuery: false,
   },
 };

@@ -1,5 +1,5 @@
 export const Error = () => {
-  const span = $('<span />', {
+  const span = jQuery('<span />', {
     class: 'help-block',
   });
 

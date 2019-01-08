@@ -3,10 +3,10 @@ import { validateInputValue } from '../utils';
 
 export const BaseFields = shape => {
   const foamFields = FIELDS[shape].fields.map(field => {
-    const wrapper = $('<div />', {
+    const wrapper = jQuery('<div />', {
       class: 'form-group col-sm-12 col-md-6 base-field-wrapper',
     });
-    const label = $('<label></label>').text(field.name);
+    const label = jQuery('<label></label>').text(field.name);
     const attributes = {
       class: `form-control ${HTMLContainers.baseFields.field(false)}`,
       placeholder: INPUT_PLACEHOLDER,
@@ -20,7 +20,7 @@ export const BaseFields = shape => {
       attributes['data-weight'] = field.weight;
     }
 
-    const input = $('<input />', attributes);
+    const input = jQuery('<input />', attributes);
 
     input.on('keyup', validateInputValue);
 
@@ -29,7 +29,7 @@ export const BaseFields = shape => {
     return wrapper;
   });
 
-  $(HTMLContainers.baseFields.container)
+  jQuery(HTMLContainers.baseFields.container)
     .html('')
     .append(foamFields);
 };

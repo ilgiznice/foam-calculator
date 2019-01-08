@@ -2,11 +2,11 @@ import { HTMLContainers, INPUT_PLACEHOLDER } from '../constants';
 import { getMaterials, validateInputValue, calculatePrice } from '../utils';
 
 const Thickness = layer => {
-  const wrapper = $('<div />', {
+  const wrapper = jQuery('<div />', {
     class: 'form-group col-sm-12 col-md-6 thickness-wrapper',
   });
-  const label = $('<label></label>').text('Thickness');
-  const input = $('<input />', {
+  const label = jQuery('<label></label>').text('Thickness');
+  const input = jQuery('<input />', {
     id: HTMLContainers.layerFields.thickness(layer, false),
     class: 'form-control',
     placeholder: INPUT_PLACEHOLDER,
@@ -18,8 +18,8 @@ const Thickness = layer => {
 };
 
 const LearnMore = () => {
-  const link = $('<a />', { class: 'modal-togggle' });
-  const image = $('<img />', { src: 'svg/information.svg' });
+  const link = jQuery('<a />', { class: 'modal-togggle' });
+  const image = jQuery('<img />', { src: 'svg/information.svg' });
   const text = 'Learn more about foam types';
 
   link.append(image, text);
@@ -29,20 +29,20 @@ const LearnMore = () => {
 
 const FoamType = layer => {
   const materialTypes = getMaterials();
-  const wrapper = $('<div />', {
+  const wrapper = jQuery('<div />', {
     class: 'form-group col-sm-12 col-md-6',
   });
-  const label = $('<label />').text('Foam Type');
-  const select = $('<select />', {
+  const label = jQuery('<label />').text('Foam Type');
+  const select = jQuery('<select />', {
     id: HTMLContainers.layerFields.foamType(layer, false),
     class: 'form-control',
   }).on('change', calculatePrice);
   const options = materialTypes.map(({ price, description }) =>
-    $('<option />', {
+    jQuery('<option />', {
       val: price,
     }).text(description),
   );
-  const emptyOption = $('<option selected disabled />').text('Select');
+  const emptyOption = jQuery('<option selected disabled />').text('Select');
 
   select.prop('selectedIndex', 0).append(emptyOption, options);
   wrapper.append(label, select);
@@ -59,7 +59,7 @@ export const LayerFields = () => {
     const thickness = Thickness(layer);
     const foamType = FoamType(layer);
 
-    $(HTMLContainers.layerFields.container(layer))
+    jQuery(HTMLContainers.layerFields.container(layer))
       .html('')
       .append(thickness, foamType);
   });
