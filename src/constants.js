@@ -158,3 +158,5 @@ export const IMAGE_FOLDER_PATH = 'images';
 export const DECIMAL_REG_EXP = /^\d*(\.\d*)?\d$/;
 
 export const INPUT_PLACEHOLDER = 'How many inches?';
+
+export const LEARN_MORE_MODAL = '#FormInstructions';

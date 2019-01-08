@@ -39,3 +39,8 @@ Go to src/constants and change "\_price" and "\_description" values in HTMLConta
 ## How to change materials' wrapper and data attributes?
 
 Go to src/constants and change container, price, description of materials in HTMLContainers
+
+## How to change modal names?
+
+"How to use this form" modal name is changed in index.html
+As for "Learn more about foam types" go to src/constants and change "LEARN_MORE_MODAL"

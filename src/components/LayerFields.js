@@ -1,4 +1,8 @@
-import { HTMLContainers, INPUT_PLACEHOLDER } from '../constants';
+import {
+  HTMLContainers,
+  INPUT_PLACEHOLDER,
+  LEARN_MORE_MODAL,
+} from '../constants';
 import { getMaterials, validateInputValue, calculatePrice } from '../utils';
 
 const Thickness = layer => {
@@ -18,7 +22,11 @@ const Thickness = layer => {
 };
 
 const LearnMore = () => {
-  const link = jQuery('<a />', { class: 'modal-togggle' });
+  const link = jQuery('<a />', {
+    class: 'modal-togggle',
+    'data-toggle': 'modal',
+    'data-target': LEARN_MORE_MODAL,
+  });
   const image = jQuery('<img />', { src: 'svg/information.svg' });
   const text = 'Learn more about foam types';
 
